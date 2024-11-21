@@ -222,7 +222,7 @@ const TicketController = {
       });
     } catch (error) {
       res.status(500).json({
-        message: "Internal server error",
+        message: "Lỗi tạo vé",
         error: error.message,
       });
     }

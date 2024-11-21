@@ -16,6 +16,11 @@ promotionRouter.get(
   isAdmin,
   PromotionController.getPromotions
 );
+promotionRouter.get(
+  "/:code",
+  checkLogin,
+  PromotionController.getPromotionByCode
+);
 promotionRouter.get("/:id", checkLogin, PromotionController.getPromotion);
 promotionRouter.put(
   "/:id",

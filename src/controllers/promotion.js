@@ -151,6 +151,25 @@ const PromotionController = {
       });
     }
   },
+  getPromotionByCode: async (req, res) => {
+    try {
+      const { code } = req.params;
+
+      // Tìm kiếm theo mã giảm giá 'code', không phải theo _id
+      const promotion = await Promotion.findOne({ code }).exec();
+
+      if (!promotion) {
+        return res.status(404).json({ message: "Không tìm thấy mã giảm giá" });
+      }
+
+      res.json(promotion);
+    } catch (error) {
+      res.status(500).json({
+        message: "Internal server error",
+        error: error.message,
+      });
+    }
+  },
 };
 
 export default PromotionController;
